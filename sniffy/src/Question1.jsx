@@ -1,8 +1,8 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types';
-
-const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+import Names from './Names';
+const characters ='ABC';
 
 function generateString(length) {
     let result = ' ';
@@ -21,8 +21,16 @@ function Question1({showHide}) {
   const handleAnswer = (e) => {
     if (e.target.value === 'yes') {
       console.log('guessInitial', guessInitial);
-      setQuestion(`POSITIVE RESPONSE`);
-      console.log('yessss');
+      const Names = ["Angela","Bill","Catherine"];
+      const thisGuess = "" + guessInitial + "";
+      console.log('thisGuess', thisGuess);
+      const allNames = Names.filter(thisName => thisName.startsWith(thisGuess));
+      console.log('allnames', allNames);
+      const getRandomName = allNames[0];
+      console.log('getRandomName', getRandomName);
+
+      console.log('getRandomName', getRandomName);
+      setQuestion(`Great! I'm guessing that your name is... ${getRandomName}`);
     } else {
       setQuestion(`NEGATIVE RESPONSE`);
       console.log('noooo');
@@ -32,7 +40,7 @@ function Question1({showHide}) {
   // On initial load
   useEffect(() => {
     const thisInitial = generateString(1);
-    setGuessInitial(thisInitial)
+    setGuessInitial(`${thisInitial}`)
     setQuestion(`I&apos;m going to guess your first name; does it begin with an ${thisInitial}?`);
   }, []);
 
