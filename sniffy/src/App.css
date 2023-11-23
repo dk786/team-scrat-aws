@@ -40,3 +40,14 @@
 .read-the-docs {
   color: #888;
 }
+
+
+input, button {
+  display: block;
+  width: 100%;
+}
+
+.hide {
+  visibility: hidden;
+  height: 0;
+}

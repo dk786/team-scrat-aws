@@ -1,33 +1,43 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Avatar from './Avatar';
+import Question1 from './Question1';
+import Question2 from './Question2';
+import Question3 from './Question3';
+
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [currentQuestion, setCurrentQuestion] = useState(1)
+
+
+  const handleThisSubmit = (e) => {
+    e.preventDefault();
+    const q1 = document.getElementById("question1").value || null
+    const q2 = document.getElementById("question2").value || null;
+    const q3 = document.getElementById("question3").value || null;
+    console.log('handleThisSubmit', q1, q2, q3);
+  }
+
+  const handleNext = () => {
+    setCurrentQuestion(currentQuestion + 1);
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Avatar mood={'happy'}/>
+        <form onSubmit={(e) => handleThisSubmit(e)} noValidate>
+
+          <Question1 setCurrentQuestion={setCurrentQuestion}  showHide={currentQuestion !== 1 ? 'hide' : 'show' }/>
+
+          <Question2 setCurrentQuestion={setCurrentQuestion} showHide={currentQuestion !== 2 ? 'hide' : 'show' }/>
+   
+          <Question3  setCurrentQuestion={setCurrentQuestion} showHide={currentQuestion !== 3 ? 'hide' : 'show' }/>
+        <button type='button' onClick={handleNext}>Next</button>
+
+        <button type='submit'>Submit</button>
+      </form>
     </>
   )
 }
