@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: grey;
 }
 
 .logo {
@@ -44,7 +45,8 @@
 
 input, button {
   display: block;
-  width: 100%;
+  width: 300px;
+  margin: 20px auto;
 }
 
 .hide {

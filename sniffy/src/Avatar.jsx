@@ -23,9 +23,7 @@ function Avatar({ mood }) {
      }
 
   return (
-    <div>
         <img src={imgSrc} />
-    </div>
   )
 }
 
